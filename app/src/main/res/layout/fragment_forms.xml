@@ -1,0 +1,350 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="16dp">
+
+        <!-- US-E1: Text input -->
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/forms_layout_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/forms_hint_text">
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/forms_input_text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:contentDescription="forms_input_text"
+                android:inputType="text"
+                android:imeOptions="actionNext" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <!-- US-E1: Number input -->
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/forms_layout_number"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:hint="@string/forms_hint_number">
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/forms_input_number"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:contentDescription="forms_input_number"
+                android:inputType="number"
+                android:imeOptions="actionNext" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <!-- US-E1: Email input -->
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/forms_layout_email"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:hint="@string/forms_hint_email">
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/forms_input_email"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:contentDescription="forms_input_email"
+                android:inputType="textEmailAddress"
+                android:imeOptions="actionNext" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <!-- US-E1: Password input with toggle -->
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/forms_layout_password"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:hint="@string/forms_hint_password"
+            app:passwordToggleEnabled="true"
+            app:passwordToggleContentDescription="@string/forms_toggle_password"
+            xmlns:app="http://schemas.android.com/apk/res-auto">
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/forms_input_password"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:contentDescription="forms_input_password"
+                android:inputType="textPassword"
+                android:imeOptions="actionNext" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <!-- US-E1: Multiline input -->
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/forms_layout_multiline"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:hint="@string/forms_hint_multiline">
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/forms_input_multiline"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:contentDescription="forms_input_multiline"
+                android:inputType="textMultiLine"
+                android:minLines="3"
+                android:gravity="top" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <!-- US-E2: Date picker -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="@string/forms_label_date"
+            android:textAppearance="?attr/textAppearanceLabelMedium" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/forms_button_pick_date"
+            style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:contentDescription="forms_button_pick_date"
+            android:text="@string/forms_button_pick_date" />
+
+        <TextView
+            android:id="@+id/forms_text_date"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:contentDescription="forms_text_date"
+            android:textAppearance="?attr/textAppearanceBodyMedium" />
+
+        <TextView
+            android:id="@+id/forms_error_date"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="?attr/colorError"
+            android:textAppearance="?attr/textAppearanceBodySmall"
+            android:visibility="gone" />
+
+        <!-- US-E2: Time picker -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:text="@string/forms_label_time"
+            android:textAppearance="?attr/textAppearanceLabelMedium" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/forms_button_pick_time"
+            style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:contentDescription="forms_button_pick_time"
+            android:text="@string/forms_button_pick_time" />
+
+        <TextView
+            android:id="@+id/forms_text_time"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:contentDescription="forms_text_time"
+            android:textAppearance="?attr/textAppearanceBodyMedium" />
+
+        <TextView
+            android:id="@+id/forms_error_time"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="?attr/colorError"
+            android:textAppearance="?attr/textAppearanceBodySmall"
+            android:visibility="gone" />
+
+        <!-- US-E3: Country spinner -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="@string/forms_label_country"
+            android:textAppearance="?attr/textAppearanceLabelMedium" />
+
+        <Spinner
+            android:id="@+id/forms_spinner_country"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:contentDescription="forms_spinner_country" />
+
+        <!-- US-E4: Radio group -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="@string/forms_label_radio"
+            android:textAppearance="?attr/textAppearanceLabelMedium" />
+
+        <RadioGroup
+            android:id="@+id/forms_radio_group"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:contentDescription="forms_radio_group">
+            <RadioButton
+                android:id="@+id/forms_radio_option_a"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:contentDescription="forms_radio_option_a"
+                android:text="@string/forms_radio_option_a" />
+            <RadioButton
+                android:id="@+id/forms_radio_option_b"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:contentDescription="forms_radio_option_b"
+                android:text="@string/forms_radio_option_b" />
+            <RadioButton
+                android:id="@+id/forms_radio_option_c"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:contentDescription="forms_radio_option_c"
+                android:text="@string/forms_radio_option_c" />
+        </RadioGroup>
+
+        <!-- US-E5: Checkboxes -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="@string/forms_label_checkbox"
+            android:textAppearance="?attr/textAppearanceLabelMedium" />
+
+        <CheckBox
+            android:id="@+id/forms_checkbox_a"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:contentDescription="forms_checkbox_a"
+            android:text="@string/forms_checkbox_a" />
+
+        <CheckBox
+            android:id="@+id/forms_checkbox_b"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:contentDescription="forms_checkbox_b"
+            android:text="@string/forms_checkbox_b" />
+
+        <CheckBox
+            android:id="@+id/forms_checkbox_c"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:contentDescription="forms_checkbox_c"
+            android:text="@string/forms_checkbox_c" />
+
+        <TextView
+            android:id="@+id/forms_text_checkbox_summary"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:contentDescription="forms_text_checkbox_summary"
+            android:textAppearance="?attr/textAppearanceBodyMedium" />
+
+        <!-- US-E6: Switches -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="@string/forms_label_switches"
+            android:textAppearance="?attr/textAppearanceLabelMedium" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:orientation="horizontal"
+            android:gravity="center_vertical">
+            <com.google.android.material.switchmaterial.SwitchMaterial
+                android:id="@+id/forms_switch_1"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:contentDescription="forms_switch_1"
+                android:text="@string/forms_switch_1" />
+            <TextView
+                android:id="@+id/forms_switch_1_state"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:contentDescription="forms_switch_1_state"
+                android:textAppearance="?attr/textAppearanceBodyMedium" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical">
+            <com.google.android.material.switchmaterial.SwitchMaterial
+                android:id="@+id/forms_switch_2"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:contentDescription="forms_switch_2"
+                android:text="@string/forms_switch_2" />
+            <TextView
+                android:id="@+id/forms_switch_2_state"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:contentDescription="forms_switch_2_state"
+                android:textAppearance="?attr/textAppearanceBodyMedium" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical">
+            <com.google.android.material.switchmaterial.SwitchMaterial
+                android:id="@+id/forms_switch_3"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:contentDescription="forms_switch_3"
+                android:text="@string/forms_switch_3" />
+            <TextView
+                android:id="@+id/forms_switch_3_state"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:contentDescription="forms_switch_3_state"
+                android:textAppearance="?attr/textAppearanceBodyMedium" />
+        </LinearLayout>
+
+        <!-- US-E7: SeekBar -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="@string/forms_label_seekbar"
+            android:textAppearance="?attr/textAppearanceLabelMedium" />
+
+        <SeekBar
+            android:id="@+id/forms_seekbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:contentDescription="forms_seekbar"
+            android:max="100" />
+
+        <TextView
+            android:id="@+id/forms_text_seekbar_value"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:contentDescription="forms_text_seekbar_value"
+            android:textAppearance="?attr/textAppearanceBodyMedium" />
+
+        <!-- US-E8: Submit -->
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/forms_button_submit"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:contentDescription="forms_button_submit"
+            android:text="@string/forms_button_submit" />
+
+    </LinearLayout>
+</androidx.core.widget.NestedScrollView>

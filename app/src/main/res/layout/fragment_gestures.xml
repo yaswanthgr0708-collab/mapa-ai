@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="16dp">
+
+        <!-- US-F1: Tap / double-tap / long-press counters -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/gestures_label_tap"
+            android:textAppearance="?attr/textAppearanceLabelLarge" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/gestures_button_tap"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:contentDescription="gestures_button_tap"
+            android:text="@string/gestures_button_tap" />
+
+        <TextView
+            android:id="@+id/gestures_text_tap_count"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:contentDescription="gestures_text_tap_count"
+            android:textAppearance="?attr/textAppearanceBodyMedium" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/gestures_button_double_tap"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:contentDescription="gestures_button_double_tap"
+            android:text="@string/gestures_button_double_tap" />
+
+        <TextView
+            android:id="@+id/gestures_text_double_tap_count"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:contentDescription="gestures_text_double_tap_count"
+            android:textAppearance="?attr/textAppearanceBodyMedium" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/gestures_button_long_press"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:contentDescription="gestures_button_long_press"
+            android:text="@string/gestures_button_long_press" />
+
+        <TextView
+            android:id="@+id/gestures_text_long_press_count"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:contentDescription="gestures_text_long_press_count"
+            android:textAppearance="?attr/textAppearanceBodyMedium" />
+
+        <!-- US-F2: Swipe direction detector -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:text="@string/gestures_label_swipe"
+            android:textAppearance="?attr/textAppearanceLabelLarge" />
+
+        <View
+            android:id="@+id/gestures_swipe_area"
+            android:layout_width="match_parent"
+            android:layout_height="120dp"
+            android:layout_marginTop="8dp"
+            android:contentDescription="gestures_swipe_area"
+            android:background="?attr/colorSurfaceVariant" />
+
+        <TextView
+            android:id="@+id/gestures_text_swipe_result"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:contentDescription="gestures_text_swipe_result"
+            android:textAppearance="?attr/textAppearanceBodyMedium" />
+
+        <!-- US-F3: Drag-and-drop reorderable list -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:text="@string/gestures_label_drag"
+            android:textAppearance="?attr/textAppearanceLabelLarge" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/gestures_recycler_drag"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:contentDescription="gestures_recycler_drag"
+            android:nestedScrollingEnabled="false" />
+
+        <!-- US-F4: Pinch-to-zoom image -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:text="@string/gestures_label_zoom"
+            android:textAppearance="?attr/textAppearanceLabelLarge" />
+
+        <com.practice.mapa.ui.common.ZoomableImageView
+            android:id="@+id/gestures_image_zoom"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:layout_marginTop="8dp"
+            android:contentDescription="gestures_image_zoom"
+            android:scaleType="fitCenter"
+            android:src="@drawable/ic_category_electronics" />
+
+        <TextView
+            android:id="@+id/gestures_text_zoom_scale"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:contentDescription="gestures_text_zoom_scale"
+            android:textAppearance="?attr/textAppearanceBodyMedium" />
+
+        <!-- US-F5: 100-item scroll list -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:text="@string/gestures_label_scroll"
+            android:textAppearance="?attr/textAppearanceLabelLarge" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/gestures_recycler_scroll"
+            android:layout_width="match_parent"
+            android:layout_height="400dp"
+            android:layout_marginTop="8dp"
+            android:contentDescription="gestures_recycler_scroll"
+            android:nestedScrollingEnabled="true" />
+
+    </LinearLayout>
+</androidx.core.widget.NestedScrollView>

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/homeFragment"
+        android:icon="@drawable/ic_tab_home"
+        android:title="@string/tab_home"
+        android:contentDescription="bottom_nav_home" />
+
+    <item
+        android:id="@+id/catalogFragment"
+        android:icon="@drawable/ic_tab_catalog"
+        android:title="@string/tab_catalog"
+        android:contentDescription="bottom_nav_catalog" />
+
+    <item
+        android:id="@+id/cartFragment"
+        android:icon="@drawable/ic_tab_cart"
+        android:title="@string/tab_cart"
+        android:contentDescription="bottom_nav_cart" />
+
+    <item
+        android:id="@+id/formsFragment"
+        android:icon="@drawable/ic_tab_forms"
+        android:title="@string/tab_forms"
+        android:contentDescription="bottom_nav_forms" />
+
+    <item
+        android:id="@+id/profileFragment"
+        android:icon="@drawable/ic_tab_profile"
+        android:title="@string/tab_settings"
+        android:contentDescription="bottom_nav_settings" />
+</menu>

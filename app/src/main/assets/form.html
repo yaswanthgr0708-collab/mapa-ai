@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>MAPA Web Form</title>
+    <style>
+        body {
+            font-family: sans-serif;
+            margin: 24px;
+            background: #fafafa;
+            color: #212121;
+        }
+        h1 { font-size: 1.4em; margin-bottom: 16px; }
+        label { display: block; margin-top: 12px; font-size: 0.9em; color: #555; }
+        input[type="text"], input[type="email"], textarea, select {
+            width: 100%;
+            box-sizing: border-box;
+            padding: 8px;
+            margin-top: 4px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 1em;
+        }
+        button {
+            margin-top: 20px;
+            padding: 10px 24px;
+            background: #6200ea;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            font-size: 1em;
+            cursor: pointer;
+        }
+        button:active { opacity: 0.8; }
+        #webform_result {
+            margin-top: 20px;
+            padding: 12px;
+            background: #e8f5e9;
+            border-radius: 4px;
+            display: none;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <h1>MAPA Web Form</h1>
+
+    <label for="webform_input_name">Full Name</label>
+    <input type="text" id="webform_input_name" name="name" placeholder="Enter your name" />
+
+    <label for="webform_input_email">Email Address</label>
+    <input type="email" id="webform_input_email" name="email" placeholder="Enter your email" />
+
+    <label for="webform_input_phone">Phone</label>
+    <input type="text" id="webform_input_phone" name="phone" placeholder="Enter your phone" />
+
+    <label for="webform_select_country">Country</label>
+    <select id="webform_select_country" name="country">
+        <option value="us">United States</option>
+        <option value="uk">United Kingdom</option>
+        <option value="ca">Canada</option>
+        <option value="au">Australia</option>
+        <option value="in">India</option>
+    </select>
+
+    <label for="webform_input_message">Message</label>
+    <textarea id="webform_input_message" name="message" rows="4" placeholder="Enter a message"></textarea>
+
+    <button id="webform_button_submit" onclick="submitForm()">Submit</button>
+
+    <div id="webform_result"></div>
+
+    <script>
+        function submitForm() {
+            var name  = document.getElementById('webform_input_name').value.trim();
+            var email = document.getElementById('webform_input_email').value.trim();
+            var result = document.getElementById('webform_result');
+            result.style.display = 'block';
+            result.textContent = 'Submitted: ' + name + ', ' + email;
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="16dp">
+
+        <!-- US-I1: Theme toggle -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/settings_label_theme"
+            android:textAppearance="?attr/textAppearanceLabelLarge" />
+
+        <com.google.android.material.switchmaterial.SwitchMaterial
+            android:id="@+id/settings_switch_dark_mode"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:contentDescription="settings_switch_dark_mode"
+            android:text="@string/settings_switch_dark_mode" />
+
+        <!-- US-I2: Language selector -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:text="@string/settings_label_language"
+            android:textAppearance="?attr/textAppearanceLabelLarge" />
+
+        <Spinner
+            android:id="@+id/settings_spinner_language"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:contentDescription="settings_spinner_language" />
+
+        <!-- US-I3: Notification preferences -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:text="@string/settings_label_notifications"
+            android:textAppearance="?attr/textAppearanceLabelLarge" />
+
+        <com.google.android.material.switchmaterial.SwitchMaterial
+            android:id="@+id/settings_switch_notif_promo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:contentDescription="settings_switch_notif_promo"
+            android:text="@string/settings_switch_notif_promo" />
+
+        <com.google.android.material.switchmaterial.SwitchMaterial
+            android:id="@+id/settings_switch_notif_orders"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:contentDescription="settings_switch_notif_orders"
+            android:text="@string/settings_switch_notif_orders" />
+
+        <com.google.android.material.switchmaterial.SwitchMaterial
+            android:id="@+id/settings_switch_notif_products"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:contentDescription="settings_switch_notif_products"
+            android:text="@string/settings_switch_notif_products" />
+
+        <!-- US-I4: Clear data -->
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/settings_button_clear_data"
+            style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            android:contentDescription="settings_button_clear_data"
+            android:text="@string/settings_button_clear_data" />
+
+    </LinearLayout>
+</androidx.core.widget.NestedScrollView>

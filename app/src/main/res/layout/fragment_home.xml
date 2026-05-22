@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:orientation="vertical"
+    android:padding="32dp">
+
+    <!--
+        home_text_welcome: asserted by Appium test US-A1 AC1.
+        Text is set dynamically to "Welcome, <username>" via HomeViewModel.
+    -->
+    <TextView
+        android:id="@+id/home_text_welcome"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="12dp"
+        android:contentDescription="home_text_welcome"
+        android:textSize="22sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/home_text_subtitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:contentDescription="home_text_subtitle"
+        android:gravity="center"
+        android:text="@string/home_subtitle"
+        android:textSize="14sp" />
+</LinearLayout>

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Tab labels -->
+    <string name="tab_home">Accueil</string>
+    <string name="tab_catalog">Catalogue</string>
+    <string name="tab_cart">Panier</string>
+    <string name="tab_forms">Formulaires</string>
+    <string name="tab_gestures">Gestes</string>
+    <string name="tab_alerts">Alertes</string>
+    <string name="tab_settings">Paramètres</string>
+    <string name="tab_web">Web</string>
+    <string name="tab_system">Système</string>
+    <string name="tab_profile">Profil</string>
+
+    <!-- Drawer labels -->
+    <string name="drawer_logout">Déconnexion</string>
+
+    <!-- Login screen -->
+    <string name="login_subtitle">Application de pratique d\'automatisation mobile</string>
+    <string name="login_hint_username">Nom d\'utilisateur</string>
+    <string name="login_hint_password">Mot de passe</string>
+    <string name="login_button_submit">Se connecter</string>
+    <string name="login_forgot_password">Mot de passe oublié ?</string>
+    <string name="login_register_prompt">Pas de compte ? S\'inscrire</string>
+
+    <!-- Language spinner (translated labels) -->
+    <string-array name="languages">
+        <item>Anglais</item>
+        <item>Français</item>
+        <item>Espagnol</item>
+    </string-array>
+</resources>

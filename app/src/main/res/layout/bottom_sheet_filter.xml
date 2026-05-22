@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="16dp">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/filter_title"
+        android:textAppearance="?attr/textAppearanceTitleMedium"
+        android:layout_marginBottom="12dp" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/filter_category_label"
+        android:textAppearance="?attr/textAppearanceLabelLarge" />
+
+    <CheckBox
+        android:id="@+id/filter_check_electronics"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/category_electronics"
+        android:contentDescription="filter_check_electronics" />
+
+    <CheckBox
+        android:id="@+id/filter_check_clothing"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/category_clothing"
+        android:contentDescription="filter_check_clothing" />
+
+    <CheckBox
+        android:id="@+id/filter_check_books"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/category_books"
+        android:contentDescription="filter_check_books" />
+
+    <CheckBox
+        android:id="@+id/filter_check_home"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/category_home"
+        android:contentDescription="filter_check_home" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="@string/filter_price_label"
+        android:textAppearance="?attr/textAppearanceLabelLarge" />
+
+    <TextView
+        android:id="@+id/filter_text_price_range"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:textAppearance="?attr/textAppearanceBodyMedium" />
+
+    <com.google.android.material.slider.RangeSlider
+        android:id="@+id/filter_range_slider"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:contentDescription="filter_range_slider" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:orientation="horizontal">
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/filter_button_clear"
+            style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_marginEnd="8dp"
+            android:contentDescription="filter_button_clear"
+            android:text="@string/filter_clear" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/filter_button_apply"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:contentDescription="filter_button_apply"
+            android:text="@string/filter_apply" />
+
+    </LinearLayout>
+</LinearLayout>

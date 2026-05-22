@@ -1,0 +1,9 @@
+{
+  "permissions": {
+    "allow": [
+      "PowerShell(Get-Command *)",
+      "PowerShell($env:PATH += \";C:\\\\Program Files\\\\Git\\\\cmd;C:\\\\Program Files\\\\Git\\\\bin\"; cd C:\\\\Projects\\\\mapa-android; git status)",
+      "PowerShell(New-Item *)"
+    ]
+  }
+}

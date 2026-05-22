@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="16dp">
+
+        <!-- US-G1: Alert Dialog -->
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/alerts_button_dialog"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:contentDescription="alerts_button_dialog"
+            android:text="@string/alerts_button_dialog" />
+
+        <!-- US-G2: Bottom Sheet -->
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/alerts_button_bottom_sheet"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:contentDescription="alerts_button_bottom_sheet"
+            android:text="@string/alerts_button_bottom_sheet" />
+
+        <!-- US-G3: Snackbar -->
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/alerts_button_snackbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:contentDescription="alerts_button_snackbar"
+            android:text="@string/alerts_button_snackbar" />
+
+        <!-- US-G4: Toast -->
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/alerts_button_toast"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:contentDescription="alerts_button_toast"
+            android:text="@string/alerts_button_toast" />
+
+        <!-- US-G5: Fullscreen Dialog -->
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/alerts_button_fullscreen"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:contentDescription="alerts_button_fullscreen"
+            android:text="@string/alerts_button_fullscreen" />
+
+        <!-- Result display -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:text="@string/alerts_result_label"
+            android:textAppearance="?attr/textAppearanceLabelLarge" />
+
+        <TextView
+            android:id="@+id/alerts_text_result"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:contentDescription="alerts_text_result"
+            android:textAppearance="?attr/textAppearanceBodyMedium" />
+
+    </LinearLayout>
+</androidx.core.widget.NestedScrollView>

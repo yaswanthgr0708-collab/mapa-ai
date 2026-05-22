@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="16dp">
+
+        <!-- US-J1: Camera permission -->
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/system_button_camera_permission"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:contentDescription="system_button_camera_permission"
+            android:text="@string/system_button_camera_permission" />
+
+        <TextView
+            android:id="@+id/system_text_permission_status"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:contentDescription="system_text_permission_status"
+            android:textAppearance="?attr/textAppearanceBodyMedium" />
+
+        <!-- US-J2: Share intent -->
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/system_button_share"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:contentDescription="system_button_share"
+            android:text="@string/system_button_share" />
+
+        <!-- US-J3: Notification -->
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/system_button_notification"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:contentDescription="system_button_notification"
+            android:text="@string/system_button_notification" />
+
+    </LinearLayout>
+</androidx.core.widget.NestedScrollView>

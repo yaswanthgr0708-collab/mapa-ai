@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="16dp">
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/alerts_sheet_button_1"
+        style="@style/Widget.MaterialComponents.Button.TextButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:contentDescription="alerts_sheet_button_1"
+        android:text="@string/alerts_sheet_action_1" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/alerts_sheet_button_2"
+        style="@style/Widget.MaterialComponents.Button.TextButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:contentDescription="alerts_sheet_button_2"
+        android:text="@string/alerts_sheet_action_2" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/alerts_sheet_button_3"
+        style="@style/Widget.MaterialComponents.Button.TextButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:contentDescription="alerts_sheet_button_3"
+        android:text="@string/alerts_sheet_action_3" />
+
+</LinearLayout>
