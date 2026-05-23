@@ -11,7 +11,8 @@ data class Product(
     val category: String,
     val price: Double,
     val description: String,
-    val discountPercentage: Int = 0
+    val discountPercentage: Int = 0,
+    val imageIndex: Int = 0
 ) {
     // Math.round avoids .99999... truncation when converting stored Double dollars to cents.
     val priceCents: Long get() = Math.round(price * 100)

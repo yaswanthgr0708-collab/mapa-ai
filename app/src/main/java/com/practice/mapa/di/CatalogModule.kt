@@ -20,7 +20,7 @@ object CatalogModule {
     @Singleton
     fun provideDatabase(@ApplicationContext context: Context): MapaDatabase =
         Room.databaseBuilder(context, MapaDatabase::class.java, "mapa_db")
-            .addMigrations(MapaDatabase.MIGRATION_1_2)
+            .addMigrations(MapaDatabase.MIGRATION_1_2, MapaDatabase.MIGRATION_2_3)
             .build()
 
     @Provides

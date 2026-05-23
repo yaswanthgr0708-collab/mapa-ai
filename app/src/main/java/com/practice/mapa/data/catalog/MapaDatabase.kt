@@ -7,7 +7,7 @@ import androidx.sqlite.db.SupportSQLiteDatabase
 
 @Database(
     entities = [Product::class, CartItem::class],
-    version = 2,
+    version = 3,
     exportSchema = false
 )
 abstract class MapaDatabase : RoomDatabase() {
@@ -15,6 +15,19 @@ abstract class MapaDatabase : RoomDatabase() {
     abstract fun cartDao(): CartDao
 
     companion object {
+        val MIGRATION_2_3 = object : Migration(2, 3) {
+            override fun migrate(db: SupportSQLiteDatabase) {
+                // Clear cart and products so CatalogRepository re-seeds with real names + imageIndex.
+                // Cart items cascade-delete with products, but we also clear explicitly for safety
+                // in case foreign-key pragmas are off on this connection.
+                db.execSQL("DELETE FROM cart_items")
+                db.execSQL("DELETE FROM products")
+                db.execSQL(
+                    "ALTER TABLE products ADD COLUMN imageIndex INTEGER NOT NULL DEFAULT 0"
+                )
+            }
+        }
+
         val MIGRATION_1_2 = object : Migration(1, 2) {
             override fun migrate(db: SupportSQLiteDatabase) {
                 db.execSQL(
