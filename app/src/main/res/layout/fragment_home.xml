@@ -267,13 +267,17 @@
             android:text="@string/home_deals_placeholder_text"
             android:textSize="14sp"
             android:textColor="?attr/colorOnSurfaceVariant"
-            android:contentDescription="home_deals_placeholder" />
+            android:contentDescription="home_deals_placeholder"
+            android:visibility="gone" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/home_deals_recycler"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:visibility="gone"
+            android:paddingStart="12dp"
+            android:paddingEnd="12dp"
+            android:paddingBottom="16dp"
+            android:clipToPadding="false"
             android:contentDescription="home_deals_recycler" />
     </LinearLayout>
 </androidx.core.widget.NestedScrollView>

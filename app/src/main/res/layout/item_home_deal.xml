@@ -2,7 +2,7 @@
 <com.google.android.material.card.MaterialCardView
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_width="120dp"
+    android:layout_width="140dp"
     android:layout_height="wrap_content"
     android:layout_margin="4dp"
     app:cardCornerRadius="8dp"
@@ -15,35 +15,35 @@
         android:gravity="center_horizontal"
         android:padding="8dp">
 
-        <!-- Icon with optional discount badge overlay -->
+        <!-- Image with 40% OFF badge overlay -->
         <FrameLayout
-            android:layout_width="40dp"
-            android:layout_height="40dp">
+            android:layout_width="match_parent"
+            android:layout_height="100dp">
 
             <ImageView
-                android:id="@+id/featured_item_icon"
+                android:id="@+id/deal_item_image"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:padding="8dp"
-                android:contentDescription="" />
+                android:scaleType="centerInside"
+                android:contentDescription="@null" />
 
             <TextView
-                android:id="@+id/featured_item_badge"
+                android:id="@+id/deal_item_badge"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="top|end"
+                android:layout_margin="4dp"
                 android:background="@drawable/bg_discount_badge"
-                android:paddingHorizontal="2dp"
-                android:paddingVertical="1dp"
+                android:paddingHorizontal="4dp"
+                android:paddingVertical="2dp"
                 android:textColor="#FFFFFF"
-                android:textSize="7sp"
-                android:textStyle="bold"
-                android:visibility="gone" />
+                android:textSize="10sp"
+                android:textStyle="bold" />
 
         </FrameLayout>
 
         <TextView
-            android:id="@+id/featured_item_name"
+            android:id="@+id/deal_item_name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="4dp"
@@ -52,25 +52,25 @@
             android:textSize="11sp"
             android:textAlignment="center" />
 
-        <!-- Original price (strikethrough, GONE when no discount) -->
+        <!-- Original price (strikethrough) -->
         <TextView
-            android:id="@+id/featured_item_price_original"
+            android:id="@+id/deal_item_price_original"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="2dp"
-            android:textSize="9sp"
+            android:textSize="10sp"
             android:textColor="?attr/colorOnSurfaceVariant"
-            android:textAlignment="center"
-            android:visibility="gone" />
+            android:textAlignment="center" />
 
-        <!-- Current / discounted price -->
+        <!-- Discounted price -->
         <TextView
-            android:id="@+id/featured_item_price_current"
+            android:id="@+id/deal_item_price_current"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="1dp"
-            android:textSize="11sp"
+            android:textSize="12sp"
             android:textStyle="bold"
+            android:textColor="?attr/colorPrimary"
             android:textAlignment="center" />
 
     </LinearLayout>

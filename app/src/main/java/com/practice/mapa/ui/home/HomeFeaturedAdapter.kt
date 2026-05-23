@@ -1,12 +1,16 @@
 package com.practice.mapa.ui.home
 
+import android.graphics.Paint
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import com.practice.mapa.R
 import com.practice.mapa.data.catalog.Product
 import com.practice.mapa.databinding.ItemHomeFeaturedBinding
+import com.practice.mapa.util.PriceUtil
 import com.practice.mapa.util.ProductImageUtil
 
 class HomeFeaturedAdapter(
@@ -29,7 +33,25 @@ class HomeFeaturedAdapter(
             featuredItemIcon.setImageResource(ProductImageUtil.imageResFor(product.category))
             featuredItemIcon.setBackgroundColor(ProductImageUtil.backgroundColorFor(product.category))
             featuredItemName.text = product.name
-            featuredItemPrice.text = "$%.2f".format(product.price)
+
+            val discounted = product.discountPercentage > 0
+            featuredItemPriceCurrent.text = PriceUtil.formatCents(product.discountedPriceCents)
+
+            if (discounted) {
+                featuredItemBadge.text = root.context.getString(
+                    R.string.discount_badge_format, product.discountPercentage
+                )
+                featuredItemBadge.visibility = View.VISIBLE
+
+                featuredItemPriceOriginal.text = PriceUtil.formatCents(product.priceCents)
+                featuredItemPriceOriginal.paintFlags =
+                    featuredItemPriceOriginal.paintFlags or Paint.STRIKE_THRU_TEXT_FLAG
+                featuredItemPriceOriginal.visibility = View.VISIBLE
+            } else {
+                featuredItemBadge.visibility = View.GONE
+                featuredItemPriceOriginal.visibility = View.GONE
+            }
+
             root.contentDescription = "featured_item_$position"
             root.setOnClickListener { onItemClick(product) }
         }

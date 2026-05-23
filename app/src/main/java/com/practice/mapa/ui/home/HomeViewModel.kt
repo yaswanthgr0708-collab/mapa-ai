@@ -37,9 +37,13 @@ class HomeViewModel @Inject constructor(
     private val _featuredProducts = MutableStateFlow<List<Product>>(emptyList())
     val featuredProducts: StateFlow<List<Product>> = _featuredProducts
 
+    private val _flashDeals = MutableStateFlow<List<Product>>(emptyList())
+    val flashDeals: StateFlow<List<Product>> = _flashDeals
+
     init {
         viewModelScope.launch {
             _featuredProducts.value = catalogRepository.getFeaturedProducts()
+            _flashDeals.value = catalogRepository.getFlashDeals()
         }
     }
 }

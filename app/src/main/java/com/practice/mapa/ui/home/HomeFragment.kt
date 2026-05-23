@@ -28,6 +28,7 @@ class HomeFragment : Fragment() {
 
     private lateinit var bannerAdapter: HomeBannerAdapter
     private lateinit var featuredAdapter: HomeFeaturedAdapter
+    private lateinit var dealAdapter: HomeDealAdapter
 
     private val autoScrollHandler = Handler(Looper.getMainLooper())
     private val autoScrollRunnable = object : Runnable {
@@ -63,10 +64,17 @@ class HomeFragment : Fragment() {
         setupCarousel()
         setupCategoryGrid()
         setupFeaturedProducts()
+        setupDeals()
 
         viewLifecycleOwner.lifecycleScope.launch {
             viewModel.featuredProducts.collect { products ->
                 featuredAdapter.submitList(products)
+            }
+        }
+
+        viewLifecycleOwner.lifecycleScope.launch {
+            viewModel.flashDeals.collect { products ->
+                dealAdapter.submitList(products)
             }
         }
     }
@@ -126,6 +134,19 @@ class HomeFragment : Fragment() {
         }
         binding.homeFeaturedRecycler.apply {
             adapter = featuredAdapter
+            layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
+        }
+    }
+
+    private fun setupDeals() {
+        dealAdapter = HomeDealAdapter { product ->
+            findNavController().navigate(
+                R.id.action_homeFragment_to_productDetailFragment,
+                bundleOf("productId" to product.id)
+            )
+        }
+        binding.homeDealsRecycler.apply {
+            adapter = dealAdapter
             layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
         }
     }

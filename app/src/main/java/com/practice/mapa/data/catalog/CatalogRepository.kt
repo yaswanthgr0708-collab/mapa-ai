@@ -42,4 +42,8 @@ class CatalogRepository @Inject constructor(
 
     suspend fun getFeaturedProducts(): List<Product> =
         productDao.getProductsByIds(listOf(1, 14, 27, 40, 53, 66, 79, 92))
+
+    // Flash deals: products where id % 7 == 0 (ids 7,14,21,28,35,42,49,56,63,70,77,84,91,98)
+    suspend fun getFlashDeals(): List<Product> =
+        productDao.getProductsByIds(listOf(7, 14, 21, 28, 35, 42, 49, 56, 63, 70, 77, 84, 91, 98))
 }
