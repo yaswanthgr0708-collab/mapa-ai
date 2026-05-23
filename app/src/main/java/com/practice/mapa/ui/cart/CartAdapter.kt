@@ -1,5 +1,6 @@
 package com.practice.mapa.ui.cart
 
+import android.graphics.Paint
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -12,6 +13,7 @@ import androidx.recyclerview.widget.RecyclerView
 import coil.load
 import com.practice.mapa.R
 import com.practice.mapa.data.catalog.CartItemWithProduct
+import com.practice.mapa.util.PriceUtil
 
 class CartAdapter(
     private val onIncrease: (Int) -> Unit,
@@ -24,29 +26,48 @@ class CartAdapter(
     }
 
     override fun onBindViewHolder(holder: CartViewHolder, position: Int) {
-        holder.bind(getItem(position), onIncrease, onDecrease)
+        holder.bind(getItem(position), position, onIncrease, onDecrease)
     }
 
     fun getItemAt(position: Int): CartItemWithProduct = getItem(position)
 
     class CartViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        private val image: ImageView       = itemView.findViewById(R.id.cart_item_image)
-        private val name: TextView         = itemView.findViewById(R.id.cart_item_name)
-        private val price: TextView        = itemView.findViewById(R.id.cart_item_price)
-        private val btnDecrease: ImageButton = itemView.findViewById(R.id.cart_item_button_decrease)
-        private val qty: TextView          = itemView.findViewById(R.id.cart_item_text_quantity)
-        private val btnIncrease: ImageButton = itemView.findViewById(R.id.cart_item_button_increase)
-        private val total: TextView        = itemView.findViewById(R.id.cart_item_text_total)
+        private val image: ImageView          = itemView.findViewById(R.id.cart_item_image)
+        private val name: TextView            = itemView.findViewById(R.id.cart_item_name)
+        private val priceCurrent: TextView    = itemView.findViewById(R.id.cart_item_price_current)
+        private val priceOriginal: TextView   = itemView.findViewById(R.id.cart_item_price_original)
+        private val btnDecrease: ImageButton  = itemView.findViewById(R.id.cart_item_button_decrease)
+        private val qty: TextView             = itemView.findViewById(R.id.cart_item_text_quantity)
+        private val btnIncrease: ImageButton  = itemView.findViewById(R.id.cart_item_button_increase)
+        private val total: TextView           = itemView.findViewById(R.id.cart_item_text_total)
 
-        fun bind(item: CartItemWithProduct, onIncrease: (Int) -> Unit, onDecrease: (Int) -> Unit) {
+        fun bind(
+            item: CartItemWithProduct,
+            position: Int,
+            onIncrease: (Int) -> Unit,
+            onDecrease: (Int) -> Unit
+        ) {
             val product = item.product
             name.text = product.name
-            price.text = "$%.2f".format(product.price)
             qty.text = item.cartItem.quantity.toString()
-            total.text = "$%.2f".format(product.price * item.cartItem.quantity)
+
+            val lineTotalCents = product.discountedPriceCents * item.cartItem.quantity
+            priceCurrent.text = PriceUtil.formatCents(product.discountedPriceCents)
+            total.text = PriceUtil.formatCents(lineTotalCents)
+
+            val discounted = product.discountPercentage > 0
+            if (discounted) {
+                priceOriginal.text = PriceUtil.formatCents(product.priceCents)
+                priceOriginal.paintFlags = priceOriginal.paintFlags or Paint.STRIKE_THRU_TEXT_FLAG
+                priceOriginal.visibility = View.VISIBLE
+            } else {
+                priceOriginal.visibility = View.GONE
+            }
 
             image.load(categoryPlaceholder(product.category))
             itemView.contentDescription = "cart_item_${product.id}"
+            priceCurrent.contentDescription  = "cart_row_${position}_price_current"
+            priceOriginal.contentDescription = "cart_row_${position}_price_original"
 
             btnDecrease.isEnabled = item.cartItem.quantity > 1
             btnDecrease.setOnClickListener { onDecrease(product.id) }

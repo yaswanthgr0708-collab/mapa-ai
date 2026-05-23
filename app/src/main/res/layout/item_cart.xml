@@ -37,12 +37,32 @@
                 android:maxLines="2"
                 android:textAppearance="?attr/textAppearanceBodyMedium" />
 
-            <TextView
-                android:id="@+id/cart_item_price"
+            <!-- Price row: original (strikethrough) + discounted current -->
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textAppearance="?attr/textAppearanceLabelMedium"
-                android:textColor="?attr/colorSecondary" />
+                android:orientation="horizontal"
+                android:gravity="center_vertical">
+
+                <!-- Original unit price (strikethrough) — GONE when no discount -->
+                <TextView
+                    android:id="@+id/cart_item_price_original"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="6dp"
+                    android:textAppearance="?attr/textAppearanceLabelSmall"
+                    android:textColor="?attr/colorOnSurfaceVariant"
+                    android:visibility="gone" />
+
+                <!-- Discounted (current) unit price -->
+                <TextView
+                    android:id="@+id/cart_item_price_current"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?attr/textAppearanceLabelMedium"
+                    android:textColor="?attr/colorSecondary" />
+
+            </LinearLayout>
 
             <LinearLayout
                 android:layout_width="wrap_content"

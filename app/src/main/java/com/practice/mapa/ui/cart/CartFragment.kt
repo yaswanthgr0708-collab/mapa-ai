@@ -14,6 +14,7 @@ import com.google.android.material.snackbar.Snackbar
 import com.practice.mapa.R
 import com.practice.mapa.data.catalog.CartItemWithProduct
 import com.practice.mapa.databinding.FragmentCartBinding
+import com.practice.mapa.util.PriceUtil
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 
@@ -48,10 +49,16 @@ class CartFragment : Fragment() {
         ItemTouchHelper(swipeCallback).attachToRecyclerView(binding.cartRecycler)
 
         binding.cartButtonCheckout.setOnClickListener {
-            val total = viewModel.cartItems.value.sumOf { it.product.price * it.cartItem.quantity }
+            val items = viewModel.cartItems.value
+            // Use discounted prices — sum in cents then convert to dollars for the bundle.
+            val totalCents = items.sumOf { it.product.discountedPriceCents * it.cartItem.quantity }
+            val savingsCents = viewModel.totalSavings.value
             findNavController().navigate(
                 R.id.action_cartFragment_to_checkoutFragment,
-                android.os.Bundle().apply { putFloat("orderTotal", total.toFloat()) }
+                android.os.Bundle().apply {
+                    putFloat("orderTotal", totalCents / 100f)
+                    putLong("totalSavingsCents", savingsCents)
+                }
             )
         }
 
@@ -62,6 +69,19 @@ class CartFragment : Fragment() {
                 binding.cartTextEmpty.visibility      = if (empty) View.VISIBLE else View.GONE
                 binding.cartRecycler.visibility       = if (empty) View.GONE    else View.VISIBLE
                 binding.cartButtonCheckout.visibility = if (empty) View.GONE    else View.VISIBLE
+            }
+        }
+
+        viewLifecycleOwner.lifecycleScope.launch {
+            viewModel.totalSavings.collect { savingsCents ->
+                if (savingsCents > 0) {
+                    binding.cartTextSavings.text = getString(
+                        R.string.cart_you_saved_format, PriceUtil.formatCents(savingsCents)
+                    )
+                    binding.cartTextSavings.visibility = View.VISIBLE
+                } else {
+                    binding.cartTextSavings.visibility = View.GONE
+                }
             }
         }
     }
