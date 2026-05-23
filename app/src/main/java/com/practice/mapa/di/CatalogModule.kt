@@ -19,7 +19,9 @@ object CatalogModule {
     @Provides
     @Singleton
     fun provideDatabase(@ApplicationContext context: Context): MapaDatabase =
-        Room.databaseBuilder(context, MapaDatabase::class.java, "mapa_db").build()
+        Room.databaseBuilder(context, MapaDatabase::class.java, "mapa_db")
+            .addMigrations(MapaDatabase.MIGRATION_1_2)
+            .build()
 
     @Provides
     fun provideProductDao(db: MapaDatabase): ProductDao = db.productDao()
