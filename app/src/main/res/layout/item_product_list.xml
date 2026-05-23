@@ -15,12 +15,33 @@
         android:padding="8dp"
         android:gravity="center_vertical">
 
-        <ImageView
-            android:id="@+id/catalog_item_image"
+        <!-- Image with discount badge overlay -->
+        <FrameLayout
             android:layout_width="72dp"
-            android:layout_height="72dp"
-            android:scaleType="centerInside"
-            android:contentDescription="@null" />
+            android:layout_height="72dp">
+
+            <ImageView
+                android:id="@+id/catalog_item_image"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scaleType="centerInside"
+                android:contentDescription="@null" />
+
+            <TextView
+                android:id="@+id/catalog_item_discount_badge"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="top|end"
+                android:layout_margin="2dp"
+                android:background="@drawable/bg_discount_badge"
+                android:paddingHorizontal="3dp"
+                android:paddingVertical="1dp"
+                android:textColor="#FFFFFF"
+                android:textSize="8sp"
+                android:textStyle="bold"
+                android:visibility="gone" />
+
+        </FrameLayout>
 
         <LinearLayout
             android:layout_width="0dp"
@@ -36,13 +57,32 @@
                 android:maxLines="2"
                 android:textAppearance="?attr/textAppearanceBodyMedium" />
 
-            <TextView
-                android:id="@+id/catalog_item_price"
+            <!-- Price row: original (strikethrough) + current side by side -->
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="4dp"
-                android:textAppearance="?attr/textAppearanceLabelLarge"
-                android:textColor="?attr/colorPrimary" />
+                android:orientation="horizontal"
+                android:gravity="center_vertical">
+
+                <TextView
+                    android:id="@+id/catalog_item_price_original"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="6dp"
+                    android:textAppearance="?attr/textAppearanceLabelSmall"
+                    android:textColor="?attr/colorOnSurfaceVariant"
+                    android:visibility="gone" />
+
+                <TextView
+                    android:id="@+id/catalog_item_price_current"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?attr/textAppearanceLabelLarge"
+                    android:textColor="?attr/colorPrimary"
+                    android:textStyle="bold" />
+
+            </LinearLayout>
 
         </LinearLayout>
     </LinearLayout>

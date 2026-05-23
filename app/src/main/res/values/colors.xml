@@ -16,4 +16,7 @@
 
     <!-- Swipe-to-delete background -->
     <color name="swipe_delete_background">#FFC62828</color>
+
+    <!-- Discount / savings -->
+    <color name="color_savings_green">#FF388E3C</color>
 </resources>

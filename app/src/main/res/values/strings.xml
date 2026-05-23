@@ -101,6 +101,13 @@
     <string name="logout_confirm_yes">Log Out</string>
     <string name="logout_confirm_no">Cancel</string>
 
+    <!-- ── Discounts (Phase 5.7) ─────────────────────────────────────── -->
+    <string name="discount_badge_format">%1$d%% OFF</string>
+    <string name="detail_price_you_save_format">You save %1$s</string>
+    <string name="cart_you_saved_format">You saved %1$s</string>
+    <string name="checkout_review_savings_format">You saved %1$s</string>
+    <string name="confirmation_savings_format">You saved %1$s</string>
+
     <!-- ── Catalog screen (US-C1 through US-C5) ───────────────────────── -->
     <string name="catalog_search_hint">Search products…</string>
     <string name="catalog_add_to_cart">Add to Cart</string>
