@@ -39,4 +39,7 @@ class CatalogRepository @Inject constructor(
     )
 
     suspend fun getProductById(id: Int): Product? = productDao.getProductById(id)
+
+    suspend fun getFeaturedProducts(): List<Product> =
+        productDao.getProductsByIds(listOf(1, 14, 27, 40, 53, 66, 79, 92))
 }

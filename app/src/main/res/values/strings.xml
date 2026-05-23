@@ -72,6 +72,29 @@
     <string name="home_welcome_format">Welcome, %1$s</string>
     <string name="home_subtitle">Explore the bottom tabs to practice Appium automation.</string>
 
+    <!-- Home screen redesign (Phase 5.6) -->
+    <string name="home_greeting_morning">Good morning</string>
+    <string name="home_greeting_afternoon">Good afternoon</string>
+    <string name="home_greeting_evening">Good evening</string>
+
+    <string name="banner_electronics_headline">Top Tech Picks</string>
+    <string name="banner_electronics_subline">Shop the latest gadgets</string>
+    <string name="banner_electronics_cta">Shop Now</string>
+    <string name="banner_clothing_headline">New Arrivals</string>
+    <string name="banner_clothing_subline">Fresh styles just landed</string>
+    <string name="banner_clothing_cta">Browse</string>
+    <string name="banner_books_headline">Book Club Picks</string>
+    <string name="banner_books_subline">Expand your mind</string>
+    <string name="banner_books_cta">Explore</string>
+    <string name="banner_home_headline">Home Essentials</string>
+    <string name="banner_home_subline">Make your space shine</string>
+    <string name="banner_home_cta">Discover</string>
+
+    <string name="home_section_categories">Shop by Category</string>
+    <string name="home_section_featured">Featured Products</string>
+    <string name="home_section_deals">Today\'s Deals</string>
+    <string name="home_deals_placeholder_text">Deals coming soon</string>
+
     <!-- ── Logout ────────────────────────────────────────────────────────── -->
     <string name="logout_confirm_title">Log Out</string>
     <string name="logout_confirm_message">Are you sure?</string>

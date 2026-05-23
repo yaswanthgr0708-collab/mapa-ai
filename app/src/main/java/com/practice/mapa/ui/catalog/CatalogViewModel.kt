@@ -1,5 +1,6 @@
 package com.practice.mapa.ui.catalog
 
+import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.practice.mapa.data.catalog.CatalogRepository
@@ -28,7 +29,8 @@ data class CatalogUiState(
 @OptIn(FlowPreview::class)
 @HiltViewModel
 class CatalogViewModel @Inject constructor(
-    private val repo: CatalogRepository
+    private val repo: CatalogRepository,
+    savedStateHandle: SavedStateHandle
 ) : ViewModel() {
 
     private val _uiState = MutableStateFlow(CatalogUiState())
@@ -37,6 +39,10 @@ class CatalogViewModel @Inject constructor(
     private val _searchInput = MutableStateFlow("")
 
     init {
+        val categoryFilter = savedStateHandle.get<String>("categoryFilter")?.takeIf { it.isNotEmpty() }
+        if (categoryFilter != null) {
+            _uiState.update { it.copy(activeCategories = setOf(categoryFilter)) }
+        }
         viewModelScope.launch {
             _searchInput
                 .debounce(300)
