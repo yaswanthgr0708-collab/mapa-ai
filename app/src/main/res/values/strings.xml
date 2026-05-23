@@ -21,6 +21,10 @@
     <string name="phase1_placeholder_subtitle">Phase-1 placeholder. Real screen lands in a later phase.</string>
     <string name="error_field_required">This field is required</string>
 
+    <!-- ── Loading states ────────────────────────────────────────────────── -->
+    <string name="loading_signing_in">Signing in…</string>
+    <string name="loading_more_products">Loading more…</string>
+
     <!-- ── Login screen ─────────────────────────────────────────────────── -->
     <string name="login_subtitle">Mobile Automation Practice App</string>
     <string name="login_hint_username">Username</string>

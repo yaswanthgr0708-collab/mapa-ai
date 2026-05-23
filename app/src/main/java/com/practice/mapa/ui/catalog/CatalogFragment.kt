@@ -17,6 +17,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.chip.Chip
 import com.practice.mapa.R
 import com.practice.mapa.databinding.FragmentCatalogBinding
+import com.practice.mapa.ui.common.MapaLoadingView
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 
@@ -82,6 +83,8 @@ class CatalogFragment : Fragment() {
             viewModel.applyFilters(categories, minPrice, maxPrice)
         }
 
+        binding.catalogLoadingInline.setMode(MapaLoadingView.Mode.INLINE)
+
         viewLifecycleOwner.lifecycleScope.launch {
             viewModel.uiState.collect { state ->
                 applyLayoutMode(state.isGridLayout)
@@ -98,6 +101,13 @@ class CatalogFragment : Fragment() {
 
                 renderEmptyState(state)
                 renderFilterChips(state)
+                // Show inline spinner only during pagination (products already loaded).
+                // Initial load is fast (in-memory); spinner during that would flash.
+                if (state.isLoading && state.products.isNotEmpty()) {
+                    binding.catalogLoadingInline.show(getString(R.string.loading_more_products))
+                } else {
+                    binding.catalogLoadingInline.hide()
+                }
             }
         }
     }

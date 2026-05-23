@@ -12,6 +12,7 @@ import androidx.navigation.fragment.findNavController
 import com.google.android.material.snackbar.Snackbar
 import com.practice.mapa.R
 import com.practice.mapa.databinding.FragmentLoginBinding
+import com.practice.mapa.ui.common.MapaLoadingView
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 
@@ -57,6 +58,8 @@ class LoginFragment : Fragment() {
             findNavController().navigate(R.id.action_loginFragment_to_registerFragment)
         }
 
+        binding.loginLoadingOverlay.setMode(MapaLoadingView.Mode.OVERLAY)
+
         viewLifecycleOwner.lifecycleScope.launch {
             viewModel.uiState.collect { state -> render(state) }
         }
@@ -71,7 +74,11 @@ class LoginFragment : Fragment() {
     private fun render(state: LoginUiState) {
         val loading = state is LoginUiState.Loading
         binding.loginButtonSubmit.isEnabled = !loading
-        binding.loginProgress.visibility = if (loading) View.VISIBLE else View.GONE
+        if (loading) {
+            binding.loginLoadingOverlay.show(getString(R.string.loading_signing_in))
+        } else {
+            binding.loginLoadingOverlay.hide()
+        }
 
         when (state) {
             LoginUiState.Idle, LoginUiState.Loading -> Unit

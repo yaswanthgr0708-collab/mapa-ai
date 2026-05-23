@@ -79,6 +79,7 @@ dependencies {
     ksp(libs.androidx.room.compiler)
 
     implementation(libs.coil)
+    implementation(libs.lottie)
 
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)

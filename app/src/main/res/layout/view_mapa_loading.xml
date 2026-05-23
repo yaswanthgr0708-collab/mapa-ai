@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    Layout for MapaLoadingView (FrameLayout subclass). Uses <merge> so children attach
+    directly to the FrameLayout without an extra nesting level.
+    IDs are stable for Appium: common_loading_lottie, common_loading_caption.
+-->
+<merge xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <!-- Dim background — toggled VISIBLE only in OVERLAY mode -->
+    <View
+        android:id="@+id/common_loading_dim"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#B3000000"
+        android:visibility="gone" />
+
+    <!-- Content: Lottie + caption. layout_gravity centers it inside the FrameLayout.
+         Orientation and Lottie size are adjusted in setMode(); defaults to INLINE (horizontal). -->
+    <LinearLayout
+        android:id="@+id/common_loading_content"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:padding="8dp">
+
+        <com.airbnb.lottie.LottieAnimationView
+            android:id="@+id/common_loading_lottie"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:contentDescription="common_loading_lottie"
+            app:lottie_rawRes="@raw/loading_animation"
+            app:lottie_loop="true"
+            app:lottie_autoPlay="false" />
+
+        <TextView
+            android:id="@+id/common_loading_caption"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:contentDescription="common_loading_caption"
+            android:textAppearance="?attr/textAppearanceBodyMedium"
+            android:visibility="gone" />
+
+    </LinearLayout>
+
+</merge>
