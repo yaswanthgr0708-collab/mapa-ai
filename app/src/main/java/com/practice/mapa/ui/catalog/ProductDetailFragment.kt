@@ -1,5 +1,6 @@
 package com.practice.mapa.ui.catalog
 
+import android.graphics.Paint
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -11,6 +12,7 @@ import com.google.android.material.snackbar.Snackbar
 import com.practice.mapa.R
 import com.practice.mapa.data.catalog.Product
 import com.practice.mapa.databinding.FragmentProductDetailBinding
+import com.practice.mapa.util.PriceUtil
 import com.practice.mapa.util.ProductImageUtil
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
@@ -51,10 +53,35 @@ class ProductDetailFragment : Fragment() {
     private fun bindProduct(product: Product) {
         binding.detailTextName.text = product.name
         binding.detailTextCategory.text = product.category
-        binding.detailTextPrice.text = "$%.2f".format(product.price)
         binding.detailTextDescription.text = product.description
         binding.detailImage.setImageResource(ProductImageUtil.imageResFor(product.category))
         binding.detailImage.setBackgroundColor(ProductImageUtil.backgroundColorFor(product.category))
+
+        val discounted = product.discountPercentage > 0
+        binding.detailTextPriceCurrent.text = PriceUtil.formatCents(product.discountedPriceCents)
+
+        if (discounted) {
+            binding.detailTextDiscountBadge.text = getString(
+                R.string.discount_badge_format, product.discountPercentage
+            )
+            binding.detailTextDiscountBadge.visibility = View.VISIBLE
+
+            binding.detailTextPriceOriginal.text = PriceUtil.formatCents(product.priceCents)
+            binding.detailTextPriceOriginal.paintFlags =
+                binding.detailTextPriceOriginal.paintFlags or Paint.STRIKE_THRU_TEXT_FLAG
+            binding.detailTextPriceOriginal.visibility = View.VISIBLE
+
+            val savings = PriceUtil.savingsCents(product.priceCents, product.discountPercentage)
+            binding.detailTextSavings.text = getString(
+                R.string.detail_price_you_save_format, PriceUtil.formatCents(savings)
+            )
+            binding.detailTextSavings.visibility = View.VISIBLE
+        } else {
+            binding.detailTextDiscountBadge.visibility = View.GONE
+            binding.detailTextPriceOriginal.visibility = View.GONE
+            binding.detailTextSavings.visibility = View.GONE
+        }
+
         binding.detailButtonAddToCart.setOnClickListener {
             viewModel.addToCart(product.id)
         }

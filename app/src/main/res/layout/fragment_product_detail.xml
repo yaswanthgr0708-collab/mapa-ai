@@ -33,13 +33,54 @@
             android:textAppearance="?attr/textAppearanceLabelMedium"
             android:textColor="?attr/colorSecondary" />
 
+        <!-- Discount badge (GONE when no discount) -->
         <TextView
-            android:id="@+id/detail_text_price"
-            android:layout_width="match_parent"
+            android:id="@+id/detail_text_discount_badge"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
+            android:background="@drawable/bg_discount_badge"
+            android:paddingHorizontal="6dp"
+            android:paddingVertical="2dp"
+            android:textColor="#FFFFFF"
+            android:textSize="12sp"
+            android:textStyle="bold"
+            android:contentDescription="detail_text_discount_badge"
+            android:visibility="gone" />
+
+        <!-- Original price strikethrough (GONE when no discount) -->
+        <TextView
+            android:id="@+id/detail_text_price_original"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:textAppearance="?attr/textAppearanceBodyMedium"
+            android:textColor="?attr/colorOnSurfaceVariant"
+            android:contentDescription="detail_text_price_original"
+            android:visibility="gone" />
+
+        <!-- Current / discounted price -->
+        <TextView
+            android:id="@+id/detail_text_price_current"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
             android:textAppearance="?attr/textAppearanceTitleLarge"
-            android:textColor="?attr/colorPrimary" />
+            android:textColor="?attr/colorPrimary"
+            android:textStyle="bold"
+            android:contentDescription="detail_text_price_current" />
+
+        <!-- "You save $X.XX" (GONE when no discount) -->
+        <TextView
+            android:id="@+id/detail_text_savings"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:textAppearance="?attr/textAppearanceLabelMedium"
+            android:textColor="@color/color_savings_green"
+            android:textStyle="bold"
+            android:contentDescription="detail_text_savings"
+            android:visibility="gone" />
 
         <TextView
             android:id="@+id/detail_text_description"
