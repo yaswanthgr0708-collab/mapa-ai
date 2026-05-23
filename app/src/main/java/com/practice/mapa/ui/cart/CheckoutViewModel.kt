@@ -38,7 +38,8 @@ data class CheckoutUiState(
     val expiryError: String? = null,
     val cvvError: String? = null,
     // Order total
-    val orderTotal: Double = 0.0
+    val orderTotal: Double = 0.0,
+    val totalSavingsCents: Long = 0L
 ) {
     val maskedCard: String get() {
         val digits = cardNumber.filter { it.isDigit() }
@@ -65,6 +66,8 @@ class CheckoutViewModel @Inject constructor(
     val event: StateFlow<CheckoutEvent?> = _event
 
     fun setOrderTotal(total: Double) = _uiState.update { it.copy(orderTotal = total) }
+
+    fun setTotalSavings(savingsCents: Long) = _uiState.update { it.copy(totalSavingsCents = savingsCents) }
 
     fun updateAddress(name: String, street: String, city: String, zip: String, country: String) {
         _uiState.update { it.copy(name = name, street = street, city = city, zip = zip, country = country) }

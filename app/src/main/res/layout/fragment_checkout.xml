@@ -250,6 +250,18 @@
                 android:textAppearance="?attr/textAppearanceTitleMedium"
                 android:textColor="?attr/colorPrimary" />
 
+            <!-- You saved $X.XX — GONE when cart has no discounts -->
+            <TextView
+                android:id="@+id/checkout_review_total_savings"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:contentDescription="checkout_review_total_savings"
+                android:textAppearance="?attr/textAppearanceLabelMedium"
+                android:textColor="@color/color_savings_green"
+                android:textStyle="bold"
+                android:visibility="gone" />
+
         </LinearLayout>
 
         <!-- Navigation buttons -->

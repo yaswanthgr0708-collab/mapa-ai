@@ -14,6 +14,7 @@ import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import com.practice.mapa.R
 import com.practice.mapa.databinding.FragmentCheckoutBinding
+import com.practice.mapa.util.PriceUtil
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 
@@ -34,6 +35,8 @@ class CheckoutFragment : Fragment() {
 
         val orderTotal = (arguments?.getFloat("orderTotal") ?: 0f).toDouble()
         viewModel.setOrderTotal(orderTotal)
+        val totalSavingsCents = arguments?.getLong("totalSavingsCents") ?: 0L
+        viewModel.setTotalSavings(totalSavingsCents)
 
         val countries = resources.getStringArray(R.array.countries)
         val countryAdapter = ArrayAdapter(requireContext(), android.R.layout.simple_spinner_item, countries)
@@ -59,8 +62,9 @@ class CheckoutFragment : Fragment() {
                     findNavController().navigate(
                         R.id.action_checkoutFragment_to_orderConfirmationFragment,
                         bundleOf(
-                            "orderId"    to event.orderId,
-                            "orderTotal" to viewModel.uiState.value.orderTotal.toFloat()
+                            "orderId"          to event.orderId,
+                            "orderTotal"       to viewModel.uiState.value.orderTotal.toFloat(),
+                            "totalSavingsCents" to viewModel.uiState.value.totalSavingsCents
                         )
                     )
                 }
@@ -123,6 +127,16 @@ class CheckoutFragment : Fragment() {
                 "${state.name}\n${state.street}\n${state.city} ${state.zip}\n${state.country}"
             binding.checkoutTextPaymentSummary.text = state.maskedCard
             binding.checkoutTextOrderTotal.text     = getString(R.string.checkout_total_format, state.orderTotal)
+
+            if (state.totalSavingsCents > 0) {
+                binding.checkoutReviewTotalSavings.text = getString(
+                    R.string.checkout_review_savings_format,
+                    PriceUtil.formatCents(state.totalSavingsCents)
+                )
+                binding.checkoutReviewTotalSavings.visibility = View.VISIBLE
+            } else {
+                binding.checkoutReviewTotalSavings.visibility = View.GONE
+            }
         }
     }
 
