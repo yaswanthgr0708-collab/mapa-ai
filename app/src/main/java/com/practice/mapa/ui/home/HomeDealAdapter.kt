@@ -6,6 +6,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import coil.load
 import com.practice.mapa.R
 import com.practice.mapa.data.catalog.Product
 import com.practice.mapa.databinding.ItemHomeDealBinding
@@ -29,8 +30,14 @@ class HomeDealAdapter(
     override fun onBindViewHolder(holder: DealViewHolder, position: Int) {
         val product = getItem(position)
         with(holder.binding) {
-            dealItemImage.setImageResource(ProductImageUtil.imageResFor(product.category))
             dealItemImage.setBackgroundColor(ProductImageUtil.backgroundColorFor(product.category))
+            dealItemImage.load(
+                ProductImageUtil.getProductImageRes(root.context, product.category, product.imageIndex)
+            ) {
+                crossfade(true)
+                placeholder(ProductImageUtil.fallbackRes(product.category))
+                error(ProductImageUtil.fallbackRes(product.category))
+            }
             dealItemName.text = product.name
 
             dealItemBadge.text = root.context.getString(

@@ -20,7 +20,7 @@
             android:id="@+id/cart_item_image"
             android:layout_width="60dp"
             android:layout_height="60dp"
-            android:scaleType="centerInside"
+            android:scaleType="centerCrop"
             android:contentDescription="@null" />
 
         <LinearLayout

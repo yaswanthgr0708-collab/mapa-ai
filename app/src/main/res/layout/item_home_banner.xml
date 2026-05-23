@@ -7,6 +7,21 @@
     app:cardCornerRadius="12dp"
     app:cardElevation="0dp">
 
+    <!-- Background photo (rendered first = behind all other layers) -->
+    <ImageView
+        android:id="@+id/banner_background_image"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scaleType="centerCrop"
+        android:contentDescription="@null" />
+
+    <!-- Dark scrim so white text stays readable over any photo -->
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#66000000" />
+
+    <!-- Text + CTA layer -->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -37,5 +52,6 @@
             android:layout_marginTop="16dp"
             app:backgroundTint="#FFFFFF"
             android:textColor="#000000" />
+
     </LinearLayout>
 </com.google.android.material.card.MaterialCardView>

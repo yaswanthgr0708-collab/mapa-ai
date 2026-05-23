@@ -14,6 +14,7 @@ import coil.load
 import com.practice.mapa.R
 import com.practice.mapa.data.catalog.CartItemWithProduct
 import com.practice.mapa.util.PriceUtil
+import com.practice.mapa.util.ProductImageUtil
 
 class CartAdapter(
     private val onIncrease: (Int) -> Unit,
@@ -64,7 +65,14 @@ class CartAdapter(
                 priceOriginal.visibility = View.GONE
             }
 
-            image.load(categoryPlaceholder(product.category))
+            image.setBackgroundColor(ProductImageUtil.backgroundColorFor(product.category))
+            image.load(
+                ProductImageUtil.getProductImageRes(itemView.context, product.category, product.imageIndex)
+            ) {
+                crossfade(true)
+                placeholder(ProductImageUtil.fallbackRes(product.category))
+                error(ProductImageUtil.fallbackRes(product.category))
+            }
             itemView.contentDescription = "cart_item_${product.id}"
             priceCurrent.contentDescription  = "cart_row_${position}_price_current"
             priceOriginal.contentDescription = "cart_row_${position}_price_original"
@@ -74,12 +82,6 @@ class CartAdapter(
             btnIncrease.setOnClickListener { onIncrease(product.id) }
         }
 
-        private fun categoryPlaceholder(category: String) = when (category) {
-            "Electronics" -> R.drawable.ic_category_electronics
-            "Clothing"    -> R.drawable.ic_category_clothing
-            "Books"       -> R.drawable.ic_category_books
-            else          -> R.drawable.ic_category_home
-        }
     }
 
     companion object {

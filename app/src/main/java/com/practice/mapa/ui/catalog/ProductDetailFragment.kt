@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
+import coil.load
 import com.google.android.material.snackbar.Snackbar
 import com.practice.mapa.R
 import com.practice.mapa.data.catalog.Product
@@ -54,8 +55,14 @@ class ProductDetailFragment : Fragment() {
         binding.detailTextName.text = product.name
         binding.detailTextCategory.text = product.category
         binding.detailTextDescription.text = product.description
-        binding.detailImage.setImageResource(ProductImageUtil.imageResFor(product.category))
         binding.detailImage.setBackgroundColor(ProductImageUtil.backgroundColorFor(product.category))
+        binding.detailImage.load(
+            ProductImageUtil.getProductImageRes(requireContext(), product.category, product.imageIndex)
+        ) {
+            crossfade(true)
+            placeholder(ProductImageUtil.fallbackRes(product.category))
+            error(ProductImageUtil.fallbackRes(product.category))
+        }
 
         val discounted = product.discountPercentage > 0
         binding.detailTextPriceCurrent.text = PriceUtil.formatCents(product.discountedPriceCents)

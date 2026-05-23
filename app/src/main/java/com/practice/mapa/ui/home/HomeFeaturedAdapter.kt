@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import coil.load
 import com.practice.mapa.R
 import com.practice.mapa.data.catalog.Product
 import com.practice.mapa.databinding.ItemHomeFeaturedBinding
@@ -30,8 +31,14 @@ class HomeFeaturedAdapter(
     override fun onBindViewHolder(holder: FeaturedViewHolder, position: Int) {
         val product = getItem(position)
         with(holder.binding) {
-            featuredItemIcon.setImageResource(ProductImageUtil.imageResFor(product.category))
             featuredItemIcon.setBackgroundColor(ProductImageUtil.backgroundColorFor(product.category))
+            featuredItemIcon.load(
+                ProductImageUtil.getProductImageRes(root.context, product.category, product.imageIndex)
+            ) {
+                crossfade(true)
+                placeholder(ProductImageUtil.fallbackRes(product.category))
+                error(ProductImageUtil.fallbackRes(product.category))
+            }
             featuredItemName.text = product.name
 
             val discounted = product.discountPercentage > 0

@@ -10,7 +10,8 @@ data class BannerItem(
     val subline: String,
     val cta: String,
     val backgroundColorInt: Int,
-    val category: String
+    val category: String,
+    val bannerImageRes: Int
 )
 
 class HomeBannerAdapter(
@@ -31,7 +32,9 @@ class HomeBannerAdapter(
     override fun onBindViewHolder(holder: BannerViewHolder, position: Int) {
         val item = items[position]
         with(holder.binding) {
+            // Keep background color as fallback under the photo.
             root.setCardBackgroundColor(item.backgroundColorInt)
+            bannerBackgroundImage.setImageResource(item.bannerImageRes)
             bannerHeadline.text = item.headline
             bannerSubline.text = item.subline
             bannerCta.text = item.cta

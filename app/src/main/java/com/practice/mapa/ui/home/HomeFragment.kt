@@ -83,35 +83,39 @@ class HomeFragment : Fragment() {
         val ctx = requireContext()
         val banners = listOf(
             BannerItem(
-                getString(R.string.banner_electronics_headline),
-                getString(R.string.banner_electronics_subline),
-                getString(R.string.banner_electronics_cta),
-                ContextCompat.getColor(ctx, R.color.category_electronics),
-                "Electronics"
+                headline         = getString(R.string.banner_electronics_headline),
+                subline          = getString(R.string.banner_electronics_subline),
+                cta              = getString(R.string.banner_electronics_cta),
+                backgroundColorInt = ContextCompat.getColor(ctx, R.color.category_electronics),
+                category         = "Electronics",
+                bannerImageRes   = R.drawable.banner_electronics
             ),
             BannerItem(
-                getString(R.string.banner_clothing_headline),
-                getString(R.string.banner_clothing_subline),
-                getString(R.string.banner_clothing_cta),
-                ContextCompat.getColor(ctx, R.color.category_clothing),
-                "Clothing"
+                headline         = getString(R.string.banner_clothing_headline),
+                subline          = getString(R.string.banner_clothing_subline),
+                cta              = getString(R.string.banner_clothing_cta),
+                backgroundColorInt = ContextCompat.getColor(ctx, R.color.category_clothing),
+                category         = "Clothing",
+                bannerImageRes   = R.drawable.banner_clothing
             ),
             BannerItem(
-                getString(R.string.banner_books_headline),
-                getString(R.string.banner_books_subline),
-                getString(R.string.banner_books_cta),
-                ContextCompat.getColor(ctx, R.color.category_books),
-                "Books"
+                headline         = getString(R.string.banner_books_headline),
+                subline          = getString(R.string.banner_books_subline),
+                cta              = getString(R.string.banner_books_cta),
+                backgroundColorInt = ContextCompat.getColor(ctx, R.color.category_books),
+                category         = "Books",
+                bannerImageRes   = R.drawable.banner_books
             ),
             BannerItem(
-                getString(R.string.banner_home_headline),
-                getString(R.string.banner_home_subline),
-                getString(R.string.banner_home_cta),
-                ContextCompat.getColor(ctx, R.color.category_home),
-                "Home"
+                headline         = getString(R.string.banner_home_headline),
+                subline          = getString(R.string.banner_home_subline),
+                cta              = getString(R.string.banner_home_cta),
+                backgroundColorInt = ContextCompat.getColor(ctx, R.color.category_home),
+                category         = "Home",
+                bannerImageRes   = R.drawable.banner_home
             )
         )
-        bannerAdapter = HomeBannerAdapter(banners) { category -> navigateToCatalog(category) }
+        bannerAdapter = HomeBannerAdapter(banners, onCtaClick = { category -> navigateToCatalog(category) })
         binding.homeCarouselPager.adapter = bannerAdapter
         TabLayoutMediator(binding.homeCarouselIndicator, binding.homeCarouselPager) { tab, _ ->
             tab.text = null

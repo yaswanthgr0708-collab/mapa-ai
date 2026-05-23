@@ -23,9 +23,6 @@ object ProductImageUtil {
         else          -> R.drawable.ic_category_electronics
     }
 
-    // Temporary alias — removed in Task 3 when all callers switch to getProductImageRes().
-    fun imageResFor(category: String): Int = fallbackRes(category)
-
     // Pastel tint used as background behind fallback vector icons and image placeholders.
     fun backgroundColorFor(category: String): Int = when (category) {
         "Electronics" -> 0xFFE3F2FD.toInt()
