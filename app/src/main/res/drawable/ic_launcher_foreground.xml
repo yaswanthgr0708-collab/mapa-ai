@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    Adaptive icon foreground: white smartphone silhouette.
+    The screen rectangle is cut out via fillType="evenOdd" so the blue background
+    shows through — giving a "blue screen on white phone" effect.
+    Safe zone: 72×72dp centred at (54,54); phone body fits within (37,14)→(71,94).
+    Requires minSdk ≥ 24 for android:fillType — satisfied by this project.
+-->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="108dp"
+    android:height="108dp"
+    android:viewportWidth="108"
+    android:viewportHeight="108">
+
+    <!--
+        Outer path  = phone body (rounded rectangle, clockwise)
+        Inner path  = screen area (rectangle, same winding → evenOdd cuts it out)
+        Result      = white phone outline with transparent screen
+    -->
+    <path
+        android:fillColor="#FFFFFF"
+        android:fillType="evenOdd"
+        android:pathData="
+            M37,20 Q37,14 43,14 H65 Q71,14 71,20 V88 Q71,94 65,94 H43 Q37,94 37,88 Z
+            M43,28 H65 V80 H43 Z" />
+
+</vector>
