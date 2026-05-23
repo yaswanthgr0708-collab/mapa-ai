@@ -126,6 +126,49 @@ object SeedCatalog {
         return names[imageIndex] ?: "$category Product $imageIndex"
     }
 
+    private val electronicsPrices = mapOf(
+        1  to 75.0,  2  to 89.0,  3  to 129.0, 4  to 99.0,  5  to 119.0,
+        6  to 179.0, 7  to 149.0, 8  to 249.0, 9  to 299.0, 10 to 389.0,
+        11 to 199.0, 12 to 229.0, 13 to 149.0, 14 to 89.0,  15 to 79.0,
+        16 to 95.0,  17 to 429.0, 18 to 479.0, 19 to 399.0, 20 to 499.0,
+        21 to 139.0, 22 to 169.0, 23 to 189.0, 24 to 219.0, 25 to 129.0
+    )
+
+    private val clothingPrices = mapOf(
+        1  to 69.0,  2  to 35.0,  3  to 55.0,  4  to 59.0,  5  to 72.0,
+        6  to 45.0,  7  to 35.0,  8  to 32.0,  9  to 74.0,  10 to 28.0,
+        11 to 45.0,  12 to 52.0,  13 to 72.0,  14 to 42.0,  15 to 28.0,
+        16 to 32.0,  17 to 58.0,  18 to 74.0,  19 to 38.0,  20 to 68.0,
+        21 to 35.0,  22 to 32.0,  23 to 38.0,  24 to 48.0,  25 to 65.0
+    )
+
+    private val booksPrices = mapOf(
+        1  to 35.0,  2  to 42.0,  3  to 38.0,  4  to 49.0,  5  to 45.0,
+        6  to 39.0,  7  to 28.0,  8  to 32.0,  9  to 22.0,  10 to 48.0,
+        11 to 19.0,  12 to 45.0,  13 to 35.0,  14 to 50.0,  15 to 42.0,
+        16 to 25.0,  17 to 48.0,  18 to 18.0,  19 to 22.0,  20 to 28.0,
+        21 to 32.0,  22 to 38.0,  23 to 15.0,  24 to 45.0,  25 to 29.0
+    )
+
+    private val homePrices = mapOf(
+        1  to 120.0, 2  to 189.0, 3  to 145.0, 4  to 110.0, 5  to 289.0,
+        6  to 219.0, 7  to 100.0, 8  to 115.0, 9  to 159.0, 10 to 175.0,
+        11 to 299.0, 12 to 275.0, 13 to 289.0, 14 to 245.0, 15 to 229.0,
+        16 to 249.0, 17 to 265.0, 18 to 279.0, 19 to 185.0, 20 to 235.0,
+        21 to 289.0, 22 to 105.0, 23 to 135.0, 24 to 100.0, 25 to 125.0
+    )
+
+    private fun priceFor(category: String, imageIndex: Int): Double {
+        val prices = when (category) {
+            "Electronics" -> electronicsPrices
+            "Clothing"    -> clothingPrices
+            "Books"       -> booksPrices
+            "Home"        -> homePrices
+            else          -> emptyMap()
+        }
+        return prices[imageIndex] ?: 9.99
+    }
+
     private fun discountFor(id: Int): Int = when {
         id % 7 == 0 -> 40
         id % 10 == 0 || id % 10 == 3 -> 15
@@ -136,7 +179,7 @@ object SeedCatalog {
         for (i in 1..100) {
             val category   = categories[(i - 1) / 25]
             val imageIndex = (i - 1) % 25 + 1
-            val price      = 5.0 + (i - 1) * 4.94
+            val price      = priceFor(category, imageIndex)
             add(
                 Product(
                     id                 = i,

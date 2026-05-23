@@ -7,7 +7,7 @@ import androidx.sqlite.db.SupportSQLiteDatabase
 
 @Database(
     entities = [Product::class, CartItem::class],
-    version = 3,
+    version = 4,
     exportSchema = false
 )
 abstract class MapaDatabase : RoomDatabase() {
@@ -15,6 +15,14 @@ abstract class MapaDatabase : RoomDatabase() {
     abstract fun cartDao(): CartDao
 
     companion object {
+        val MIGRATION_3_4 = object : Migration(3, 4) {
+            override fun migrate(db: SupportSQLiteDatabase) {
+                // Clear and re-seed so CatalogRepository populates realistic prices.
+                db.execSQL("DELETE FROM cart_items")
+                db.execSQL("DELETE FROM products")
+            }
+        }
+
         val MIGRATION_2_3 = object : Migration(2, 3) {
             override fun migrate(db: SupportSQLiteDatabase) {
                 // Clear cart and products so CatalogRepository re-seeds with real names + imageIndex.
