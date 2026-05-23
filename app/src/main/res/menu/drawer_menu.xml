@@ -9,22 +9,27 @@
             android:contentDescription="drawer_home" />
         <item
             android:id="@+id/gesturesFragment"
+            android:icon="@drawable/ic_gestures"
             android:title="@string/tab_gestures"
             android:contentDescription="drawer_gestures" />
         <item
             android:id="@+id/alertsFragment"
+            android:icon="@drawable/ic_alerts"
             android:title="@string/tab_alerts"
             android:contentDescription="drawer_alerts" />
         <item
             android:id="@+id/profileFragment"
+            android:icon="@drawable/ic_settings"
             android:title="@string/tab_settings"
             android:contentDescription="drawer_settings" />
         <item
             android:id="@+id/webViewFragment"
+            android:icon="@drawable/ic_webview"
             android:title="@string/tab_web"
             android:contentDescription="drawer_web" />
         <item
             android:id="@+id/systemFragment"
+            android:icon="@drawable/ic_system"
             android:title="@string/tab_system"
             android:contentDescription="drawer_system" />
     </group>
@@ -32,6 +37,7 @@
     <!-- Logout is outside the checkable group — it's an action, not a destination. -->
     <item
         android:id="@+id/drawer_logout"
+        android:icon="@drawable/ic_logout"
         android:title="@string/drawer_logout"
         android:contentDescription="drawer_logout" />
 </menu>
