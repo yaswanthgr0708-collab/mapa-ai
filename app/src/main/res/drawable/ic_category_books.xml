@@ -1,10 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!-- Open book with spine and two pages -->
 <vector xmlns:android="http://schemas.android.com/apk/res/android"
     android:width="96dp"
     android:height="96dp"
     android:viewportWidth="24"
     android:viewportHeight="24">
+    <!-- Left page -->
     <path
-        android:fillColor="#E65100"
-        android:pathData="M18,2H6a2,2 0,0 0,-2 2v16a2,2 0,0 0,2 2h12a2,2 0,0 0,2 -2V4a2,2 0,0 0,-2 -2zM6,4h5v8l-2.5,-1.5L6,12V4z"/>
+        android:fillColor="#795548"
+        android:pathData="M2,5 Q2,4 3,4 H11 Q12,4 12,5 V19 Q12,20 11,20 H3 Q2,20 2,19 Z" />
+    <!-- Right page -->
+    <path
+        android:fillColor="#A1887F"
+        android:pathData="M12,5 Q12,4 13,4 H21 Q22,4 22,5 V19 Q22,20 21,20 H13 Q12,20 12,19 Z" />
+    <!-- Spine line -->
+    <path
+        android:fillColor="#4E342E"
+        android:pathData="M11.5,4 H12.5 V20 H11.5 Z" />
+    <!-- Text lines on left page -->
+    <path
+        android:fillColor="#D7CCC8"
+        android:pathData="M4,7 H10 V8 H4 Z M4,10 H10 V11 H4 Z M4,13 H10 V14 H4 Z M4,16 H8 V17 H4 Z" />
+    <!-- Text lines on right page -->
+    <path
+        android:fillColor="#D7CCC8"
+        android:pathData="M14,7 H20 V8 H14 Z M14,10 H20 V11 H14 Z M14,13 H20 V14 H14 Z M14,16 H18 V17 H14 Z" />
 </vector>

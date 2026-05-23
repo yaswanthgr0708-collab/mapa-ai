@@ -1,10 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!-- Monitor with a stand: two rectangles forming the screen bezel + stand + base -->
 <vector xmlns:android="http://schemas.android.com/apk/res/android"
     android:width="96dp"
     android:height="96dp"
     android:viewportWidth="24"
     android:viewportHeight="24">
+    <!-- Screen bezel -->
     <path
         android:fillColor="#1565C0"
-        android:pathData="M7,2h10a2,2 0,0 1,2 2v16a2,2 0,0 1,-2 2H7a2,2 0,0 1,-2 -2V4a2,2 0,0 1,2 -2zM9,4v2h6V4H9zM12,18a1,1 0,1 0,0 -2,1 1,0 0,0 0,2z"/>
+        android:pathData="M2,4 Q2,3 3,3 H21 Q22,3 22,4 V16 Q22,17 21,17 H13 V19 H15 Q15.5,19 15.5,19.5 V20.5 Q15.5,21 15,21 H9 Q8.5,21 8.5,20.5 V19.5 Q8.5,19 9,19 H11 V17 H3 Q2,17 2,16 Z" />
+    <!-- Screen interior -->
+    <path
+        android:fillColor="#90CAF9"
+        android:pathData="M4,5 H20 V15 H4 Z" />
 </vector>

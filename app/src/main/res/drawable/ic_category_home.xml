@@ -1,10 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!-- House: triangular roof + rectangular body + door -->
 <vector xmlns:android="http://schemas.android.com/apk/res/android"
     android:width="96dp"
     android:height="96dp"
     android:viewportWidth="24"
     android:viewportHeight="24">
+    <!-- Roof -->
     <path
-        android:fillColor="#6A1B9A"
-        android:pathData="M10,20v-6h4v6h5v-8h3L12,3 2,12h3v8z"/>
+        android:fillColor="#2E7D32"
+        android:pathData="M12,3 L22,11 H20 V21 H4 V11 H2 Z" />
+    <!-- Door -->
+    <path
+        android:fillColor="#C8E6C9"
+        android:pathData="M9,21 V14 Q9,13 10,13 H14 Q15,13 15,14 V21 Z" />
+    <!-- Window left -->
+    <path
+        android:fillColor="#A5D6A7"
+        android:pathData="M6,13 H9 V16 H6 Z" />
+    <!-- Window right -->
+    <path
+        android:fillColor="#A5D6A7"
+        android:pathData="M15,13 H18 V16 H15 Z" />
 </vector>

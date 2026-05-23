@@ -7,11 +7,11 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
-import coil.load
 import com.google.android.material.snackbar.Snackbar
 import com.practice.mapa.R
 import com.practice.mapa.data.catalog.Product
 import com.practice.mapa.databinding.FragmentProductDetailBinding
+import com.practice.mapa.util.ProductImageUtil
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 
@@ -53,17 +53,11 @@ class ProductDetailFragment : Fragment() {
         binding.detailTextCategory.text = product.category
         binding.detailTextPrice.text = "$%.2f".format(product.price)
         binding.detailTextDescription.text = product.description
-        binding.detailImage.load(categoryPlaceholder(product.category))
+        binding.detailImage.setImageResource(ProductImageUtil.imageResFor(product.category))
+        binding.detailImage.setBackgroundColor(ProductImageUtil.backgroundColorFor(product.category))
         binding.detailButtonAddToCart.setOnClickListener {
             viewModel.addToCart(product.id)
         }
-    }
-
-    private fun categoryPlaceholder(category: String) = when (category) {
-        "Electronics" -> R.drawable.ic_category_electronics
-        "Clothing"    -> R.drawable.ic_category_clothing
-        "Books"       -> R.drawable.ic_category_books
-        else          -> R.drawable.ic_category_home
     }
 
     override fun onDestroyView() {

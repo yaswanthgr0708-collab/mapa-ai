@@ -8,9 +8,9 @@ import android.widget.TextView
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import coil.load
 import com.practice.mapa.R
 import com.practice.mapa.data.catalog.Product
+import com.practice.mapa.util.ProductImageUtil
 
 class ProductAdapter(
     private val onItemClick: (Product) -> Unit
@@ -38,20 +38,14 @@ class ProductAdapter(
         fun bind(product: Product, position: Int, onClick: (Product) -> Unit) {
             name.text = product.name
             price.text = "$%.2f".format(product.price)
-            image.load(categoryPlaceholder(product.category))
+            image.setImageResource(ProductImageUtil.imageResFor(product.category))
+            image.setBackgroundColor(ProductImageUtil.backgroundColorFor(product.category))
             // Root: stable product-id-based id so tests can find "product 42" directly.
             // Child fields: position-indexed per HANDOFF Section 4.3.
             itemView.contentDescription = "product_${product.id}"
             name.contentDescription  = "product_item_${position}_title"
             price.contentDescription = "product_item_${position}_price"
             itemView.setOnClickListener { onClick(product) }
-        }
-
-        private fun categoryPlaceholder(category: String) = when (category) {
-            "Electronics" -> R.drawable.ic_category_electronics
-            "Clothing"    -> R.drawable.ic_category_clothing
-            "Books"       -> R.drawable.ic_category_books
-            else          -> R.drawable.ic_category_home
         }
     }
 
